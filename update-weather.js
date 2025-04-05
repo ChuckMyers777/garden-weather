@@ -2,8 +2,8 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 
 async function updateWeather() {
-  const latitude = 32.55;  // Replace with your latitude
-  const longitude = -83.71; // Replace with your garden’s longitude
+  const latitude = 52.52;  // Replace with your garden’s latitude
+  const longitude = 13.41; // Replace with your garden’s longitude
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,precipitation,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&temperature_unit=fahrenheit&precipitation_unit=inch`;
 
   const response = await fetch(url);
@@ -15,8 +15,9 @@ async function updateWeather() {
     windspeed: data.current_weather.windspeed
   };
 
-  // Update timestamp
-  const updateTime = new Date().toLocaleString();
+  // Timestamps
+  const updateTime = new Date().toLocaleString(); // Forecast update time
+  const cronRunTime = new Date().toLocaleString(); // Cron job run time
 
   // Hourly forecast (next 24 hours)
   const hourly = data.hourly.time.slice(0, 24).map((time, index) => ({
@@ -39,6 +40,7 @@ async function updateWeather() {
   const weatherData = {
     current,
     updateTime,
+    cronRunTime, // New field for cron job run time
     hourly,
     daily
   };
