@@ -1,151 +1,152 @@
 {
   "current": {
-    "temperature": 70.5,
-    "windspeed": 9.1
+    "temperature": 50.4,
+    "windspeed": 20.5
   },
-  "updateTime": "4/5/2025, 1:36:51 PM",
+  "updateTime": "4/5/2025, 2:44:55 PM",
+  "cronRunTime": "4/5/2025, 2:44:55 PM",
   "hourly": [
     {
       "time": "2025-04-05T00:00",
-      "temperature": 79.2,
+      "temperature": 49.6,
       "precipitation": 0,
-      "probability": 2
+      "probability": 0
     },
     {
       "time": "2025-04-05T01:00",
-      "temperature": 76.9,
+      "temperature": 46.3,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T02:00",
-      "temperature": 73.7,
+      "temperature": 43.9,
       "precipitation": 0,
-      "probability": 5
+      "probability": 0
     },
     {
       "time": "2025-04-05T03:00",
-      "temperature": 72.8,
+      "temperature": 43.2,
       "precipitation": 0,
-      "probability": 2
+      "probability": 0
     },
     {
       "time": "2025-04-05T04:00",
-      "temperature": 71.9,
+      "temperature": 42,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T05:00",
-      "temperature": 70.5,
+      "temperature": 41.1,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T06:00",
-      "temperature": 69,
+      "temperature": 40.9,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T07:00",
-      "temperature": 67.8,
+      "temperature": 41.8,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T08:00",
-      "temperature": 66.3,
+      "temperature": 44.4,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T09:00",
-      "temperature": 65.5,
+      "temperature": 46.5,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T10:00",
-      "temperature": 65.1,
+      "temperature": 48.7,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T11:00",
-      "temperature": 64.3,
+      "temperature": 50.7,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T12:00",
-      "temperature": 64.6,
+      "temperature": 51.4,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T13:00",
-      "temperature": 68.5,
+      "temperature": 51.8,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T14:00",
-      "temperature": 72.7,
+      "temperature": 51.3,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T15:00",
-      "temperature": 76.4,
+      "temperature": 49.5,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T16:00",
-      "temperature": 80.1,
+      "temperature": 46.3,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T17:00",
-      "temperature": 83.1,
+      "temperature": 44,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T18:00",
-      "temperature": 85,
+      "temperature": 41.4,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T19:00",
-      "temperature": 85.6,
+      "temperature": 39.5,
       "precipitation": 0,
-      "probability": 1
+      "probability": 0
     },
     {
       "time": "2025-04-05T20:00",
-      "temperature": 86.1,
+      "temperature": 38.1,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T21:00",
-      "temperature": 86.1,
+      "temperature": 36.9,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T22:00",
-      "temperature": 85.2,
+      "temperature": 36,
       "precipitation": 0,
       "probability": 0
     },
     {
       "time": "2025-04-05T23:00",
-      "temperature": 82.8,
+      "temperature": 35.1,
       "precipitation": 0,
       "probability": 0
     }
@@ -153,52 +154,52 @@
   "daily": [
     {
       "date": "2025-04-05",
-      "maxTemp": 86.1,
-      "minTemp": 64.3,
+      "maxTemp": 51.8,
+      "minTemp": 35.1,
       "precipitation": 0,
-      "probability": 5
+      "probability": 0
     },
     {
       "date": "2025-04-06",
-      "maxTemp": 85,
-      "minTemp": 66.5,
+      "maxTemp": 47.9,
+      "minTemp": 32.6,
       "precipitation": 0,
-      "probability": 46
+      "probability": 3
     },
     {
       "date": "2025-04-07",
-      "maxTemp": 78.8,
-      "minTemp": 54.6,
-      "precipitation": 0.776,
-      "probability": 87
+      "maxTemp": 55.7,
+      "minTemp": 36.3,
+      "precipitation": 0,
+      "probability": 3
     },
     {
       "date": "2025-04-08",
-      "maxTemp": 66.3,
-      "minTemp": 44.7,
-      "precipitation": 0.004,
-      "probability": 79
+      "maxTemp": 55,
+      "minTemp": 38,
+      "precipitation": 0,
+      "probability": 3
     },
     {
       "date": "2025-04-09",
-      "maxTemp": 69.7,
-      "minTemp": 43.6,
+      "maxTemp": 59.7,
+      "minTemp": 35,
       "precipitation": 0,
       "probability": 0
     },
     {
       "date": "2025-04-10",
-      "maxTemp": 75.5,
-      "minTemp": 50.5,
+      "maxTemp": 62.1,
+      "minTemp": 39.8,
       "precipitation": 0,
-      "probability": 3
+      "probability": 7
     },
     {
       "date": "2025-04-11",
-      "maxTemp": 70.5,
-      "minTemp": 53.3,
-      "precipitation": 0.11,
-      "probability": 16
+      "maxTemp": 57,
+      "minTemp": 43.7,
+      "precipitation": 0.035,
+      "probability": 35
     }
   ]
 }
