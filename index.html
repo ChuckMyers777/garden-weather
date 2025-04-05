@@ -4,20 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garden Weather</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .below-40 {
+      background-color: red;
+    }
+    .below-50 {
+      background-color: yellow;
+    }
+  </style>
 </head>
 <body>
   <h1>Current Weather</h1>
   <p id="temperature"></p>
   <p id="windspeed"></p>
+  <p id="updateTime"></p>
+
+  <h2>Hourly Forecast (Next 24 Hours)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Temp (°F)</th>
+        <th>Precip (in)</th>
+        <th>Chance of Rain (%)</th>
+      </tr>
+    </thead>
+    <tbody id="hourlyForecast"></tbody>
+  </table>
+
+  <h2>Daily Forecast (Next 7 Days)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Max Temp (°F)</th>
+        <th>Min Temp (°F)</th>
+        <th>Precip (in)</th>
+        <th>Chance of Rain (%)</th>
+      </tr>
+    </thead>
+    <tbody id="dailyForecast"></tbody>
+  </table>
+
   <script>
     async function fetchWeather() {
       const response = await fetch('weather.json');
       const data = await response.json();
-      document.getElementById('temperature').textContent = `Temperature: ${data.temperature} °C`;
-      document.getElementById('windspeed').textContent = `Wind Speed: ${data.windspeed} km/h`;
+
+      // Display current weather
+      document.getElementById('temperature').textContent = `Temperature: ${data.current.temperature} °F`;
+      document.getElementById('windspeed').textContent = `Wind Speed: ${data.current.windspeed} mph`;
+      document.getElementById('updateTime').textContent = `Updated: ${data.updateTime}`;
+
+      // Display hourly forecast
+      const hourlyTable = document.getElementById('hourlyForecast');
+      hourlyTable.innerHTML = '';
+      data.hourly.forEach(hour => {
+        const row = document.createElement('tr');
+        const time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        row.innerHTML = `
+          <td>${time}</td>
+          <td>${hour.temperature}</td>
+          <td>${hour.precipitation}</td>
+          <td>${hour.probability}</td>
+        `;
+        hourlyTable.appendChild(row);
+      });
+
+      // Display daily forecast
+      const dailyTable = document.getElementById('dailyForecast');
+      dailyTable.innerHTML = '';
+      data.daily.forEach(day => {
+        const row = document.createElement('tr');
+        const date = new Date(day.date).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        row.innerHTML = `
+          <td>${date}</td>
+          <td>${day.maxTemp}</td>
+          <td>${day.minTemp}</td>
+          <td>${day.precipitation}</td>
+          <td>${day.probability}</td>
+        `;
+        dailyTable.appendChild(row);
+      });
+
+      // Apply color-coding based on minimum temperature in next 24 hours
+      const minTemp = Math.min(...data.hourly.map(h => h.temperature));
+      document.body.classList.remove('below-40', 'below-50'); // Reset classes
+      if (minTemp < 40) {
+        document.body.classList.add('below-40');
+      } else if (minTemp < 50) {
+        document.body.classList.add('below-50');
+      }
     }
+
+    // Fetch weather data initially and refresh every minute
     fetchWeather();
-    setInterval(fetchWeather, 60000); // Refresh every minute
+    setInterval(fetchWeather, 60000);
   </script>
 </body>
 </html>
