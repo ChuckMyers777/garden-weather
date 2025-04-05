@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Weather</title>
+</head>
+<body>
+  <h1>Current Weather</h1>
+  <p id="temperature"></p>
+  <p id="windspeed"></p>
+  <script>
+    async function fetchWeather() {
+      const response = await fetch('weather.json');
+      const data = await response.json();
+      document.getElementById('temperature').textContent = `Temperature: ${data.temperature} °C`;
+      document.getElementById('windspeed').textContent = `Wind Speed: ${data.windspeed} km/h`;
+    }
+    fetchWeather();
+    setInterval(fetchWeather, 60000); // Refresh every minute
+  </script>
+</body>
+</html>
