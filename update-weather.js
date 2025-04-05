@@ -1,10 +1,9 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
+import fs from 'fs';
+import fetch from 'node-fetch';
 
 async function updateWeather() {
-  // Replace with your garden's latitude and longitude
-  const latitude = 32.55;  // Example: Berlin
-  const longitude = -83.71;
+  const latitude = 32.55;  // Replace with your latitude
+  const longitude = -83.71; // Replace with your longitude
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
 
   const response = await fetch(url);
@@ -16,4 +15,5 @@ async function updateWeather() {
   fs.writeFileSync('weather.json', JSON.stringify(weatherData, null, 2));
 }
 
-updateWeather();
+// Run the function and handle any errors
+updateWeather().catch(console.error);
