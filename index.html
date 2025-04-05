@@ -9,6 +9,18 @@
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+    .forecast-container {
+      display: flex;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    .forecast-card {
+      min-width: 100px;
+      margin-right: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
     table {
       border-collapse: collapse;
       width: 100%;
@@ -35,6 +47,13 @@
   <p id="temperature"></p>
   <p id="windspeed"></p>
   <p id="updateTime"></p>
+  <p id="cronRunTime"></p> <!-- Display cron job run time -->
+
+  <h2>Hourly Forecast (Next 8 Hours)</h2>
+  <div class="forecast-container" id="hourlyForecast8"></div>
+
+  <h2>Daily Forecast (Next 7 Days)</h2>
+  <div class="forecast-container" id="dailyForecast"></div>
 
   <h2>Hourly Forecast (Next 24 Hours)</h2>
   <table>
@@ -46,21 +65,7 @@
         <th>Chance of Rain (%)</th>
       </tr>
     </thead>
-    <tbody id="hourlyForecast"></tbody>
-  </table>
-
-  <h2>Daily Forecast (Next 7 Days)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Max Temp (°F)</th>
-        <th>Min Temp (°F)</th>
-        <th>Precip (in)</th>
-        <th>Chance of Rain (%)</th>
-      </tr>
-    </thead>
-    <tbody id="dailyForecast"></tbody>
+    <tbody id="hourlyForecast24"></tbody>
   </table>
 
   <script>
@@ -71,11 +76,45 @@
       // Display current weather
       document.getElementById('temperature').textContent = `Temperature: ${data.current.temperature} °F`;
       document.getElementById('windspeed').textContent = `Wind Speed: ${data.current.windspeed} mph`;
-      document.getElementById('updateTime').textContent = `Updated: ${data.updateTime}`;
+      document.getElementById('updateTime').textContent = `Forecast Updated: ${data.updateTime}`;
+      document.getElementById('cronRunTime').textContent = `Last Cron Run: ${data.cronRunTime}`; // New display
 
-      // Display hourly forecast
-      const hourlyTable = document.getElementById('hourlyForecast');
-      hourlyTable.innerHTML = '';
+      // Horizontal 8-hour forecast
+      const hourly8Container = document.getElementById('hourlyForecast8');
+      hourly8Container.innerHTML = '';
+      data.hourly.slice(0, 8).forEach(hour => {
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        const time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        card.innerHTML = `
+          <p>${time}</p>
+          <p>${hour.temperature} °F</p>
+          <p>Precip: ${hour.precipitation} in</p>
+          <p>Rain: ${hour.probability}%</p>
+        `;
+        hourly8Container.appendChild(card);
+      });
+
+      // Horizontal 7-day forecast
+      const dailyContainer = document.getElementById('dailyForecast');
+      dailyContainer.innerHTML = '';
+      data.daily.forEach(day => {
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        const date = new Date(day.date).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        card.innerHTML = `
+          <p>${date}</p>
+          <p>Max: ${day.maxTemp} °F</p>
+          <p>Min: ${day.minTemp} °F</p>
+          <p>Precip: ${day.precipitation} in</p>
+          <p>Rain: ${day.probability}%</p>
+        `;
+        dailyContainer.appendChild(card);
+      });
+
+      // Vertical 24-hour forecast
+      const hourly24Table = document.getElementById('hourlyForecast24');
+      hourly24Table.innerHTML = '';
       data.hourly.forEach(hour => {
         const row = document.createElement('tr');
         const time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -85,28 +124,12 @@
           <td>${hour.precipitation}</td>
           <td>${hour.probability}</td>
         `;
-        hourlyTable.appendChild(row);
+        hourly24Table.appendChild(row);
       });
 
-      // Display daily forecast
-      const dailyTable = document.getElementById('dailyForecast');
-      dailyTable.innerHTML = '';
-      data.daily.forEach(day => {
-        const row = document.createElement('tr');
-        const date = new Date(day.date).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
-        row.innerHTML = `
-          <td>${date}</td>
-          <td>${day.maxTemp}</td>
-          <td>${day.minTemp}</td>
-          <td>${day.precipitation}</td>
-          <td>${day.probability}</td>
-        `;
-        dailyTable.appendChild(row);
-      });
-
-      // Apply color-coding based on minimum temperature in next 24 hours
+      // Color-coding based on minimum temperature
       const minTemp = Math.min(...data.hourly.map(h => h.temperature));
-      document.body.classList.remove('below-40', 'below-50'); // Reset classes
+      document.body.classList.remove('below-40', 'below-50');
       if (minTemp < 40) {
         document.body.classList.add('below-40');
       } else if (minTemp < 50) {
@@ -114,9 +137,8 @@
       }
     }
 
-    // Fetch weather data initially and refresh every minute
     fetchWeather();
-    setInterval(fetchWeather, 60000);
+    setInterval(fetchWeather, 60000); // Refresh every minute
   </script>
 </body>
 </html>
