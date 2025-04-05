@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 async function updateWeather() {
   const latitude = 32.55;  // Replace with your latitude
   const longitude = -83.71; // Replace with your longitude
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true';
 
   const response = await fetch(url);
   const data = await response.json();
