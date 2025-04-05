@@ -1,9 +1,9 @@
 {
   "current": {
-    "temperature": 65.7,
-    "windspeed": 8
+    "temperature": 67.7,
+    "windspeed": 10.1
   },
-  "updateTime": "4/5/2025, 12:23:42 PM",
+  "updateTime": "4/5/2025, 12:55:53 PM",
   "hourly": [
     {
       "time": "2025-04-05T00:00",
