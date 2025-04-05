@@ -24,4 +24,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add weather.json
           git commit -m "Update weather data" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ChuckMyers777/garden-weather.git
