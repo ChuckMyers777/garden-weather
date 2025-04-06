@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,18 +43,134 @@
     }
   </style>
 </head>
-<body>
+<body class="below-40">
   <h1>Current Weather</h1>
-  <p id="temperature"></p>
-  <p id="windspeed"></p>
-  <p id="updateTime"></p>
-  <p id="cronRunTime"></p> <!-- Display cron job run time -->
+  <p>Temperature: 35.3 °F</p>
+  <p>Wind Speed: 10.2 mph</p>
+  <p>Forecast Updated: 4/6/2025, 12:00:00 AM</p>
+  <p>Last Cron Run: 4/6/2025, 12:01:32 AM</p>
 
   <h2>Hourly Forecast (Next 8 Hours)</h2>
-  <div class="forecast-container" id="hourlyForecast8"></div>
+  <div class="forecast-container">
+    
+      <div class="forecast-card">
+        <p>12:00 AM</p>
+        <p>35.3 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>01:00 AM</p>
+        <p>34.5 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>02:00 AM</p>
+        <p>34 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>03:00 AM</p>
+        <p>33.2 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>04:00 AM</p>
+        <p>32.9 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>05:00 AM</p>
+        <p>32.7 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>06:00 AM</p>
+        <p>33.5 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 3%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>07:00 AM</p>
+        <p>35.3 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 5%</p>
+      </div>
+    
+  </div>
 
   <h2>Daily Forecast (Next 7 Days)</h2>
-  <div class="forecast-container" id="dailyForecast"></div>
+  <div class="forecast-container">
+    
+      <div class="forecast-card">
+        <p>Sun, Apr 6</p>
+        <p>Max: 48.1 °F</p>
+        <p>Min: 32.7 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 5%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Mon, Apr 7</p>
+        <p>Max: 55.9 °F</p>
+        <p>Min: 37.5 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 3%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Tue, Apr 8</p>
+        <p>Max: 53.7 °F</p>
+        <p>Min: 35.9 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Wed, Apr 9</p>
+        <p>Max: 56.6 °F</p>
+        <p>Min: 35.2 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 0%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Thu, Apr 10</p>
+        <p>Max: 56.4 °F</p>
+        <p>Min: 39.4 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 9%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Fri, Apr 11</p>
+        <p>Max: 53.2 °F</p>
+        <p>Min: 43.3 °F</p>
+        <p>Precip: 0.047 in</p>
+        <p>Rain: 23%</p>
+      </div>
+    
+      <div class="forecast-card">
+        <p>Sat, Apr 12</p>
+        <p>Max: 62.3 °F</p>
+        <p>Min: 41.5 °F</p>
+        <p>Precip: 0 in</p>
+        <p>Rain: 20%</p>
+      </div>
+    
+  </div>
 
   <h2>Hourly Forecast (Next 24 Hours)</h2>
   <table>
@@ -65,80 +182,178 @@
         <th>Chance of Rain (%)</th>
       </tr>
     </thead>
-    <tbody id="hourlyForecast24"></tbody>
+    <tbody>
+      
+        <tr>
+          <td>12:00 AM</td>
+          <td>35.3</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>01:00 AM</td>
+          <td>34.5</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>02:00 AM</td>
+          <td>34</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>03:00 AM</td>
+          <td>33.2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>04:00 AM</td>
+          <td>32.9</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>05:00 AM</td>
+          <td>32.7</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>06:00 AM</td>
+          <td>33.5</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+      
+        <tr>
+          <td>07:00 AM</td>
+          <td>35.3</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+      
+        <tr>
+          <td>08:00 AM</td>
+          <td>37.8</td>
+          <td>0</td>
+          <td>3</td>
+        </tr>
+      
+        <tr>
+          <td>09:00 AM</td>
+          <td>41</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>10:00 AM</td>
+          <td>43</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>11:00 AM</td>
+          <td>45.2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>12:00 PM</td>
+          <td>45.2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>01:00 PM</td>
+          <td>47.7</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>02:00 PM</td>
+          <td>48.1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>03:00 PM</td>
+          <td>47.7</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>04:00 PM</td>
+          <td>46.6</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>05:00 PM</td>
+          <td>45.4</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>06:00 PM</td>
+          <td>43.9</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>07:00 PM</td>
+          <td>42.6</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>08:00 PM</td>
+          <td>41.7</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>09:00 PM</td>
+          <td>41.1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>10:00 PM</td>
+          <td>40.2</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+        <tr>
+          <td>11:00 PM</td>
+          <td>39.1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      
+    </tbody>
   </table>
-
-  <script>
-    async function fetchWeather() {
-      const response = await fetch('weather.json');
-      const data = await response.json();
-
-      // Display current weather
-      document.getElementById('temperature').textContent = `Temperature: ${data.current.temperature} °F`;
-      document.getElementById('windspeed').textContent = `Wind Speed: ${data.current.windspeed} mph`;
-      document.getElementById('updateTime').textContent = `Forecast Updated: ${data.updateTime}`;
-      document.getElementById('cronRunTime').textContent = `Last Cron Run: ${data.cronRunTime}`; // New display
-
-      // Horizontal 8-hour forecast
-      const hourly8Container = document.getElementById('hourlyForecast8');
-      hourly8Container.innerHTML = '';
-      data.hourly.slice(0, 8).forEach(hour => {
-        const card = document.createElement('div');
-        card.className = 'forecast-card';
-        const time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        card.innerHTML = `
-          <p>${time}</p>
-          <p>${hour.temperature} °F</p>
-          <p>Precip: ${hour.precipitation} in</p>
-          <p>Rain: ${hour.probability}%</p>
-        `;
-        hourly8Container.appendChild(card);
-      });
-
-      // Horizontal 7-day forecast
-      const dailyContainer = document.getElementById('dailyForecast');
-      dailyContainer.innerHTML = '';
-      data.daily.forEach(day => {
-        const card = document.createElement('div');
-        card.className = 'forecast-card';
-        const date = new Date(day.date).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
-        card.innerHTML = `
-          <p>${date}</p>
-          <p>Max: ${day.maxTemp} °F</p>
-          <p>Min: ${day.minTemp} °F</p>
-          <p>Precip: ${day.precipitation} in</p>
-          <p>Rain: ${day.probability}%</p>
-        `;
-        dailyContainer.appendChild(card);
-      });
-
-      // Vertical 24-hour forecast
-      const hourly24Table = document.getElementById('hourlyForecast24');
-      hourly24Table.innerHTML = '';
-      data.hourly.forEach(hour => {
-        const row = document.createElement('tr');
-        const time = new Date(hour.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        row.innerHTML = `
-          <td>${time}</td>
-          <td>${hour.temperature}</td>
-          <td>${hour.precipitation}</td>
-          <td>${hour.probability}</td>
-        `;
-        hourly24Table.appendChild(row);
-      });
-
-      // Color-coding based on minimum temperature
-      const minTemp = Math.min(...data.hourly.map(h => h.temperature));
-      document.body.classList.remove('below-40', 'below-50');
-      if (minTemp < 40) {
-        document.body.classList.add('below-40');
-      } else if (minTemp < 50) {
-        document.body.classList.add('below-50');
-      }
-    }
-
-    fetchWeather();
-    setInterval(fetchWeather, 60000); // Refresh every minute
-  </script>
 </body>
 </html>
+  
