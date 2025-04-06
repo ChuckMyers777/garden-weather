@@ -2,14 +2,15 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 
 async function updateWeather() {
-  // Coordinates for your garden (example: Berlin)
-  const latitude = 52.52;  // Replace with your latitude
-  const longitude = 13.41; // Replace with your longitude
+  const latitude = 32.55;  // Replace with your latitude
+  const longitude = -83.71; // Replace with your longitude
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,precipitation,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&temperature_unit=fahrenheit&precipitation_unit=inch`;
 
-  // Fetch weather data
   const response = await fetch(url);
   const data = await response.json();
+
+  // Convert UTC to ET
+  const toET = (dateString) => new Date(dateString).toLocaleString('en-US', { timeZone: 'America/New_York' });
 
   // Current weather
   const current = {
@@ -18,31 +19,30 @@ async function updateWeather() {
   };
 
   // Timestamps
-  const forecastUpdateTime = new Date(data.current_weather.time).toLocaleString();
-  const cronRunTime = new Date().toLocaleString();
+  const forecastUpdateTime = toET(data.current_weather.time);
+  const cronRunTime = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
 
   // Hourly forecast (next 24 hours)
-  const hourly = data.hourly.time.slice(0, 24).map((time, index) => ({
-    time: new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    temperature: data.hourly.temperature_2m[index],
-    precipitation: data.hourly.precipitation[index],
-    probability: data.hourly.precipitation_probability[index]
-  }));
+  const hourly = data.hourly.time.slice(0, 24).map((time, index) => {
+    const etTime = new Date(time).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: true }).replace(':00', '').toLowerCase();
+    return {
+      time: etTime, // e.g., "2am"
+      temperature: data.hourly.temperature_2m[index],
+      precipitation: data.hourly.precipitation[index],
+      probability: data.hourly.precipitation_probability[index]
+    };
+  });
 
   // Daily forecast (next 7 days)
   const daily = data.daily.time.map((time, index) => ({
-    date: new Date(time).toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }),
+    date: new Date(time).toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'short', month: 'short', day: 'numeric' }),
     maxTemp: data.daily.temperature_2m_max[index],
     minTemp: data.daily.temperature_2m_min[index],
     precipitation: data.daily.precipitation_sum[index],
     probability: data.daily.precipitation_probability_max[index]
   }));
 
-  // Color-code based on minimum temperature in the next 24 hours
-  const minTemp = Math.min(...hourly.map(h => h.temperature));
-  const bodyClass = minTemp < 40 ? 'below-40' : minTemp < 50 ? 'below-50' : '';
-
-  // Generate static HTML
+  // Generate HTML
   const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -51,44 +51,17 @@ async function updateWeather() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garden Weather</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .forecast-container {
-      display: flex;
-      overflow-x: auto;
-      margin-bottom: 20px;
-    }
-    .forecast-card {
-      min-width: 100px;
-      margin-right: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .below-40 {
-      background-color: red;
-    }
-    .below-50 {
-      background-color: yellow;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .forecast-container { display: flex; overflow-x: auto; margin-bottom: 20px; }
+    .forecast-card { min-width: 100px; margin-right: 10px; padding: 10px; border: 1px solid #ccc; text-align: center; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; font-size: 0.8em; }
+    th, td { border: 1px solid black; padding: 4px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    .below-40 { background-color: red; }
+    .below-50 { background-color: yellow; }
   </style>
 </head>
-<body class="${bodyClass}">
+<body>
   <h1>Current Weather</h1>
   <p>Temperature: ${current.temperature} °F</p>
   <p>Wind Speed: ${current.windspeed} mph</p>
@@ -101,8 +74,8 @@ async function updateWeather() {
       <div class="forecast-card">
         <p>${hour.time}</p>
         <p>${hour.temperature} °F</p>
-        <p>Precip: ${hour.precipitation} in</p>
-        <p>Rain: ${hour.probability}%</p>
+        <p>${hour.precipitation} in</p>
+        <p>${hour.probability}%</p>
       </div>
     `).join('')}
   </div>
@@ -114,8 +87,8 @@ async function updateWeather() {
         <p>${day.date}</p>
         <p>Max: ${day.maxTemp} °F</p>
         <p>Min: ${day.minTemp} °F</p>
-        <p>Precip: ${day.precipitation} in</p>
-        <p>Rain: ${day.probability}%</p>
+        <p>${day.precipitation} in</p>
+        <p>${day.probability}%</p>
       </div>
     `).join('')}
   </div>
@@ -127,14 +100,14 @@ async function updateWeather() {
         <th>Time</th>
         <th>Temp (°F)</th>
         <th>Precip (in)</th>
-        <th>Chance of Rain (%)</th>
+        <th>Rain (%)</th>
       </tr>
     </thead>
     <tbody>
       ${hourly.map(hour => `
         <tr>
           <td>${hour.time}</td>
-          <td>${hour.temperature}</td>
+          <td class="${hour.temperature < 40 ? 'below-40' : hour.temperature < 50 ? 'below-50' : ''}">${hour.temperature}</td>
           <td>${hour.precipitation}</td>
           <td>${hour.probability}</td>
         </tr>
@@ -145,7 +118,6 @@ async function updateWeather() {
 </html>
   `;
 
-  // Write to index.html
   fs.writeFileSync('index.html', html);
 }
 
