@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Runs at the beginning of every hour (0 minutes past the hour)
   workflow_dispatch:        # Allows manual triggering
-  
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -22,6 +22,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add weather.json
+          git add index.html
           git commit -m "Update weather data" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ChuckMyers777/garden-weather.git
