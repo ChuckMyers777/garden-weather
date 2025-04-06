@@ -6,107 +6,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garden Weather</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .forecast-container {
-      display: flex;
-      overflow-x: auto;
-      margin-bottom: 20px;
-    }
-    .forecast-card {
-      min-width: 100px;
-      margin-right: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    .below-40 {
-      background-color: red;
-    }
-    .below-50 {
-      background-color: yellow;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .forecast-container { display: flex; overflow-x: auto; margin-bottom: 20px; }
+    .forecast-card { min-width: 100px; margin-right: 10px; padding: 10px; border: 1px solid #ccc; text-align: center; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; font-size: 0.8em; }
+    th, td { border: 1px solid black; padding: 4px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    .below-40 { background-color: red; }
+    .below-50 { background-color: yellow; }
   </style>
 </head>
-<body class="below-40">
+<body>
   <h1>Current Weather</h1>
-  <p>Temperature: 35.3 °F</p>
-  <p>Wind Speed: 10.2 mph</p>
-  <p>Forecast Updated: 4/6/2025, 12:00:00 AM</p>
-  <p>Last Cron Run: 4/6/2025, 12:01:32 AM</p>
+  <p>Temperature: 75.4 °F</p>
+  <p>Wind Speed: 13 mph</p>
+  <p>Forecast Updated: 4/5/2025, 8:45:00 PM</p>
+  <p>Last Cron Run: 4/5/2025, 8:53:52 PM</p>
 
   <h2>Hourly Forecast (Next 8 Hours)</h2>
   <div class="forecast-container">
     
       <div class="forecast-card">
-        <p>12:00 AM</p>
-        <p>35.3 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>8 pm</p>
+        <p>77.7 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>01:00 AM</p>
-        <p>34.5 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>9 pm</p>
+        <p>74.8 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>02:00 AM</p>
-        <p>34 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>10 pm</p>
+        <p>72.9 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>03:00 AM</p>
-        <p>33.2 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>11 pm</p>
+        <p>71.2 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>04:00 AM</p>
-        <p>32.9 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>12 am</p>
+        <p>69.9 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>05:00 AM</p>
-        <p>32.7 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>1 am</p>
+        <p>68.8 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>06:00 AM</p>
-        <p>33.5 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 3%</p>
+        <p>2 am</p>
+        <p>68.3 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
       <div class="forecast-card">
-        <p>07:00 AM</p>
-        <p>35.3 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 5%</p>
+        <p>3 am</p>
+        <p>67.3 °F</p>
+        <p>0 in</p>
+        <p>0%</p>
       </div>
     
   </div>
@@ -115,59 +88,59 @@
   <div class="forecast-container">
     
       <div class="forecast-card">
+        <p>Sat, Apr 5</p>
+        <p>Max: 85 °F</p>
+        <p>Min: 65.2 °F</p>
+        <p>0 in</p>
+        <p>15%</p>
+      </div>
+    
+      <div class="forecast-card">
         <p>Sun, Apr 6</p>
-        <p>Max: 48.1 °F</p>
-        <p>Min: 32.7 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 5%</p>
+        <p>Max: 78.8 °F</p>
+        <p>Min: 53.5 °F</p>
+        <p>1.185 in</p>
+        <p>89%</p>
       </div>
     
       <div class="forecast-card">
         <p>Mon, Apr 7</p>
-        <p>Max: 55.9 °F</p>
-        <p>Min: 37.5 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 3%</p>
+        <p>Max: 66.3 °F</p>
+        <p>Min: 44 °F</p>
+        <p>0 in</p>
+        <p>89%</p>
       </div>
     
       <div class="forecast-card">
         <p>Tue, Apr 8</p>
-        <p>Max: 53.7 °F</p>
-        <p>Min: 35.9 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>Max: 69.9 °F</p>
+        <p>Min: 42.9 °F</p>
+        <p>0 in</p>
+        <p>1%</p>
       </div>
     
       <div class="forecast-card">
         <p>Wed, Apr 9</p>
-        <p>Max: 56.6 °F</p>
-        <p>Min: 35.2 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 0%</p>
+        <p>Max: 74.4 °F</p>
+        <p>Min: 50.5 °F</p>
+        <p>0 in</p>
+        <p>3%</p>
       </div>
     
       <div class="forecast-card">
         <p>Thu, Apr 10</p>
-        <p>Max: 56.4 °F</p>
-        <p>Min: 39.4 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 9%</p>
+        <p>Max: 69.2 °F</p>
+        <p>Min: 56.8 °F</p>
+        <p>0.024 in</p>
+        <p>14%</p>
       </div>
     
       <div class="forecast-card">
         <p>Fri, Apr 11</p>
-        <p>Max: 53.2 °F</p>
-        <p>Min: 43.3 °F</p>
-        <p>Precip: 0.047 in</p>
-        <p>Rain: 23%</p>
-      </div>
-    
-      <div class="forecast-card">
-        <p>Sat, Apr 12</p>
-        <p>Max: 62.3 °F</p>
-        <p>Min: 41.5 °F</p>
-        <p>Precip: 0 in</p>
-        <p>Rain: 20%</p>
+        <p>Max: 59.8 °F</p>
+        <p>Min: 46 °F</p>
+        <p>0.031 in</p>
+        <p>14%</p>
       </div>
     
   </div>
@@ -179,177 +152,177 @@
         <th>Time</th>
         <th>Temp (°F)</th>
         <th>Precip (in)</th>
-        <th>Chance of Rain (%)</th>
+        <th>Rain (%)</th>
       </tr>
     </thead>
     <tbody>
       
         <tr>
-          <td>12:00 AM</td>
-          <td>35.3</td>
+          <td>8 pm</td>
+          <td class="">77.7</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>01:00 AM</td>
-          <td>34.5</td>
+          <td>9 pm</td>
+          <td class="">74.8</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>02:00 AM</td>
-          <td>34</td>
+          <td>10 pm</td>
+          <td class="">72.9</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>03:00 AM</td>
-          <td>33.2</td>
+          <td>11 pm</td>
+          <td class="">71.2</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>04:00 AM</td>
-          <td>32.9</td>
+          <td>12 am</td>
+          <td class="">69.9</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>05:00 AM</td>
-          <td>32.7</td>
+          <td>1 am</td>
+          <td class="">68.8</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>06:00 AM</td>
-          <td>33.5</td>
-          <td>0</td>
-          <td>3</td>
-        </tr>
-      
-        <tr>
-          <td>07:00 AM</td>
-          <td>35.3</td>
-          <td>0</td>
-          <td>5</td>
-        </tr>
-      
-        <tr>
-          <td>08:00 AM</td>
-          <td>37.8</td>
-          <td>0</td>
-          <td>3</td>
-        </tr>
-      
-        <tr>
-          <td>09:00 AM</td>
-          <td>41</td>
+          <td>2 am</td>
+          <td class="">68.3</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>10:00 AM</td>
-          <td>43</td>
+          <td>3 am</td>
+          <td class="">67.3</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>11:00 AM</td>
-          <td>45.2</td>
+          <td>4 am</td>
+          <td class="">66.1</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>12:00 PM</td>
-          <td>45.2</td>
+          <td>5 am</td>
+          <td class="">65.3</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>01:00 PM</td>
-          <td>47.7</td>
+          <td>6 am</td>
+          <td class="">65.4</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>02:00 PM</td>
-          <td>48.1</td>
+          <td>7 am</td>
+          <td class="">65.2</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>03:00 PM</td>
-          <td>47.7</td>
+          <td>8 am</td>
+          <td class="">66.6</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>04:00 PM</td>
-          <td>46.6</td>
+          <td>9 am</td>
+          <td class="">69.8</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>05:00 PM</td>
-          <td>45.4</td>
+          <td>10 am</td>
+          <td class="">72.8</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>06:00 PM</td>
-          <td>43.9</td>
+          <td>11 am</td>
+          <td class="">74.9</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>07:00 PM</td>
-          <td>42.6</td>
+          <td>12 pm</td>
+          <td class="">78.3</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>08:00 PM</td>
-          <td>41.7</td>
+          <td>1 pm</td>
+          <td class="">80.1</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>09:00 PM</td>
-          <td>41.1</td>
+          <td>2 pm</td>
+          <td class="">81.9</td>
           <td>0</td>
           <td>0</td>
         </tr>
       
         <tr>
-          <td>10:00 PM</td>
-          <td>40.2</td>
+          <td>3 pm</td>
+          <td class="">83.5</td>
           <td>0</td>
-          <td>0</td>
+          <td>1</td>
         </tr>
       
         <tr>
-          <td>11:00 PM</td>
-          <td>39.1</td>
+          <td>4 pm</td>
+          <td class="">84.7</td>
           <td>0</td>
+          <td>4</td>
+        </tr>
+      
+        <tr>
+          <td>5 pm</td>
+          <td class="">85</td>
           <td>0</td>
+          <td>8</td>
+        </tr>
+      
+        <tr>
+          <td>6 pm</td>
+          <td class="">84</td>
+          <td>0</td>
+          <td>11</td>
+        </tr>
+      
+        <tr>
+          <td>7 pm</td>
+          <td class="">81.1</td>
+          <td>0</td>
+          <td>15</td>
         </tr>
       
     </tbody>
